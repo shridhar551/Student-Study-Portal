@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Study Portal</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="app-container">
+        <aside class="sidebar">
+            <h2><i class="fa-solid fa-graduation-cap"></i> StudyPortal</h2>
+            <nav>
+                <button class="nav-btn active" onclick="switchTab('dashboard')"><i class="fa-solid fa-chart-pie"></i> Dashboard</button>
+                <button class="nav-btn" onclick="switchTab('notes')"><i class="fa-solid fa-note-sticky"></i> Notes</button>
+                <button class="nav-btn" onclick="switchTab('todo')"><i class="fa-solid fa-list-check"></i> To-Do List</button>
+                <button class="nav-btn" onclick="switchTab('attendance')"><i class="fa-solid fa-calendar-check"></i> Attendance</button>
+                <button class="nav-btn" onclick="switchTab('pomodoro')"><i class="fa-solid fa-clock"></i> Pomodoro</button>
+            </nav>
+        </aside>
+
+        <main class="main-content">
+            
+            <section id="dashboard" class="tab-content active">
+                <h1>Welcome Back!</h1>
+                <div class="dashboard-grid">
+                    <div class="dash-card">
+                        <h3><i class="fa-solid fa-clock"></i> Current Focus</h3>
+                        <p id="dash-timer">25:00</p>
+                    </div>
+                    <div class="dash-card">
+                        <h3><i class="fa-solid fa-list-check"></i> Pending Tasks</h3>
+                        <p id="dash-todo-count">0 Tasks remaining</p>
+                    </div>
+                    <div class="dash-card">
+                        <h3><i class="fa-solid fa-note-sticky"></i> Total Notes</h3>
+                        <p id="dash-notes-count">0 Notes saved</p>
+                    </div>
+                </div>
+            </section>
+
+            <section id="notes" class="tab-content">
+                <h1>Notes Management</h1>
+                <div class="notes-container">
+                    <div class="note-form">
+                        <input type="text" id="note-title" placeholder="Note Title...">
+                        <textarea id="note-content" placeholder="Write your note here..." rows="6"></textarea>
+                        <button onclick="addNote()"><i class="fa-solid fa-plus"></i> Save Note</button>
+                    </div>
+                    <div id="notes-list" class="grid-list"></div>
+                </div>
+            </section>
+
+            <section id="todo" class="tab-content">
+                <h1>To-Do List</h1>
+                <div class="todo-container">
+                    <div class="input-group">
+                        <input type="text" id="todo-input" placeholder="Add a new task...">
+                        <button onclick="addTodo()"><i class="fa-solid fa-plus"></i></button>
+                    </div>
+                    <ul id="todo-list" class="list-group"></ul>
+                </div>
+            </section>
+
+            <section id="attendance" class="tab-content">
+                <h1>Attendance Tracker</h1>
+                <div class="attendance-container">
+                    <div class="input-group">
+                        <input type="text" id="subject-input" placeholder="Subject Name (e.g., OS, Java)...">
+                        <button onclick="addSubject()"><i class="fa-solid fa-plus"></i> Add Subject</button>
+                    </div>
+                    <div id="attendance-list" class="grid-list"></div>
+                </div>
+            </section>
+
+            <section id="pomodoro" class="tab-content">
+                <h1>Pomodoro Timer</h1>
+                <div class="pomodoro-container">
+                    <div class="timer-display" id="timer-display">25:00</div>
+                    <div class="timer-modes">
+                        <button class="mode-btn active" onclick="setTimerMode('work')">Work (25m)</button>
+                        <button class="mode-btn" onclick="setTimerMode('short')">Short Break (5m)</button>
+                        <button class="mode-btn" onclick="setTimerMode('long')">Long Break (15m)</button>
+                    </div>
+                    <div class="timer-controls">
+                        <button id="start-btn" onclick="toggleTimer()"><i class="fa-solid fa-play"></i> Start</button>
+                        <button id="reset-btn" onclick="resetTimer()"><i class="fa-solid fa-rotate-left"></i> Reset</button>
+                    </div>
+                </div>
+            </section>
+
+        </main>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
